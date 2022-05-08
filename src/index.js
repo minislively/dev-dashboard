@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals'
-
-import { createStore } from 'redux'
+/* redux/toolkit 때문에 발생함.  그에 맞게 문법 바꿔주거나
+toolkit를 삭제하면 될 듯. 우선은 나중에 해결하자. */
+import { createStore } from 'redux'; 
 
 import { Provider } from 'react-redux'
 
@@ -19,7 +20,7 @@ const store = createStore(
   rootReducer
 )
 
-document.title = 'Tua CRM'
+document.title = 'TS&P Developers'
 
 ReactDOM.render(
   <Provider store={store}>
