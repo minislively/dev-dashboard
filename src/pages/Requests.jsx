@@ -24,7 +24,6 @@ const renderBody = (item, index) => (
     </tr>
 )
 
-
 const Ratelist = () => {
     return (
         <div>

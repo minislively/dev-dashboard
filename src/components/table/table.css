@@ -14,10 +14,12 @@ thead {
 
 tr {
   text-align: left;
+  display: inline-block;
 }
 
 th,
 td {
+  min-width: 245px;
   text-transform: capitalize;
   padding: 15px 10px;
 }

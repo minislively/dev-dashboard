@@ -1,8 +1,9 @@
 import React from 'react'
+import Ratelist from './Ratelist'
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <Ratelist/>
   )
 }
 
