@@ -1,30 +1,55 @@
-import React from 'react'
+import React from "react"
+// import Table from "../components/table/Table"
+import LiveClock from "../components/liveclock/Liveclock"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const Exchange = () => {
+
+
+axios.defaults.withCredentials = true; // withCredentials 전역 설정
+function Footer () {
+  const [server, setServer] = useState([]);
+// 필요한 api 여기다가 넣기. useState와 useEffect 두 개 못 쓰면 페이지 나눠서 </> 불러오는 식으로 하기. 
+  useEffect(() => {
+    axios.get("http://localhost:5005/api/rate")
+    .then(response => {
+      setServer(response.data);
+      console.log(server)
+    })
+    .catch(error => console.log(error))
+  })
+
   return (
-    <div>
-      <h2 className="page-header">환율수집정보</h2>
-            <div className="row-7">
-                <div className="col-6">
-                    <div className="row">
-                        {
-                          <nav className=''>
-                          <div>
-                            <h3>구글 파이낸스</h3>
-                            <h3><a href='https://www.google.com/finance/markets/currencies'>https://www.google.com/finance/markets/currencies</a></h3>
-                          </div>
-                          <div>
-                            <h3>지머니트랜스</h3>
-                            <h3><a href='https://www.gmoneytrans.com/prices/'>https://www.gmoneytrans.com/prices/</a> </h3>
-                          </div>
-
-                        </nav>  
-                        }
-                    </div>
-                </div>
+    // 하루 누적 요청량 부분 
+      <div className="row">
+      <div className="col-4">
+        <div className="card">
+          <div className="card__header">
+            <div className='calcSite'>
+            <h3>하루 누적 요청량</h3>
           </div>
+          <div className="card__body">
+
+          </div>
+          </div>
+        </div>
+{/* 환율 수집 정보 파트 */}
+      </div>
+        <div className="col-8">
+        <div className="card">
+          <div className="card__header">
+            <div className='calcSite'>
+            <h3>환율 수집 정보</h3> <LiveClock/>
+          </div>
+          <div className="card__body">
+
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   )
 }
 
-export default Exchange
+export default Footer

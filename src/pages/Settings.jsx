@@ -1,9 +1,10 @@
 import React from 'react'
-import Ratelist from './Ratelist'
+
+import Payment from './Payment'
 
 const Settings = () => {
   return (
-    <Ratelist/>
+    <Payment />
   )
 }
 
