@@ -1,10 +1,16 @@
 import React from 'react'
-
-import Payment from './Payment'
+import Info2 from './Info2'
+import Info1 from './Info1'
+import Input from '../components/inputData/Input'
 
 const Settings = () => {
   return (
-    <Payment />
+    <div>
+
+      <Info1/>
+      <Info2 />
+      <Input/>
+    </div>
   )
 }
 

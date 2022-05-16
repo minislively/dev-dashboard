@@ -1,0 +1,12 @@
+.additional h2 {
+  margin: 10px 20px;
+}
+.additional li {
+  background-color: white;
+  width: 100%;
+  font-size: 16px;
+  padding: 20px;
+  list-style: none;
+  font-family: sans-serif;
+  font-weight: bold;
+}

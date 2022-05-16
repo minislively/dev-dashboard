@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import './info.css'
 
 export default function App() {
-  const [selectedOption, setSelectedOption] = useState("none");
+  const [selectedOption, setSelectedOption] = useState([]);
   const options = [
     { value: "none", label: "Empty" },
     { value: "left", label: "Open Left" },
@@ -21,7 +22,15 @@ export default function App() {
   };
 
   return (
-    <div>
+    <div className="additional">
+      <Select
+        options={options}
+        onChange={handleTypeSelect}
+        value={options.filter(function(option) {
+          return option.value === selectedOption;
+        })}
+        label="Single select"
+      />
       <Select
         options={options}
         onChange={handleTypeSelect}
