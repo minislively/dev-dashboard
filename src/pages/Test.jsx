@@ -16,7 +16,7 @@ function Test(){
   const [rate, setRate] = useState([]);
   // 함수 뺴는 것으로 나중에 처리 해야함. -> 코드 수정  
   useEffect(() => {
-    axios.get("http://localhost:5005/api/rate")
+    axios.get("/api/rate")
     .then(res => {
       console.log(res)
       setRate(res.data);
