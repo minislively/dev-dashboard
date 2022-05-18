@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios'
-import "./styles.css";
+import "./inputData.css";
 
 export default function InputData() {
 
@@ -18,7 +18,7 @@ export default function InputData() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h3>필수 입력 정보</h3>
+      <label>필수 입력 정보</label>
       <select {...register("selectPlatform")}>
         <option value="kftc">kftc</option>
         <option value="paypal">paypal</option>
