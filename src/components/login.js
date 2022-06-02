@@ -3,28 +3,68 @@ import {useForm} from "react-hook-form";
 import './style.css'
 import axios from 'axios'
 
+const initValue = {
+  userId: "",
+  userPw: ""
+}
+
+
 export default function Login() {
 
-  const { register, handleSubmit} = useForm({});
+  function joinHandler() {
+    console.log("로그인 시도...");
+  }
 
-    // Content-Type : api 연동 시 보내는 자원을 명시화하기 위해 사용됨.
-    // HTTP Header에 명시해줄 수 있도록 해주는 필드임. 
-    // application/json : RestFul API를 사용하게 되며 request를 날릴 때 json을 많이 사용하게 됨에 따라 늘어남.  
+  const { register, handleSubmit, formState: {errors}} = useForm({
+    defaultValues: initValue
+  });
+
 
   const onSubmit = async(data) => {
+    
+    const {userId, userPw} = data; 
     axios.post('http://localhost:8080/bridge/devLogin', data, 
-    {headers: {'Content-Type' : 'application/json'}})
-    .then(response=>{console.log(response.data)})
+    {headers: {'Content-Type' : 'application/json'}["Content-Type"]},
+    {userId, userPw})
+    .then(response=>{console.log(response.data)
+    if(userId === "choi2507" && userPw==="567890"){
+        document.location.href='/footer'
+        console.log('로그인 성공')
+
+    }
+    else if(userId === "koy321" && userPw==="123456"){
+      // 작업 완료 되면 페이지 이동 (새로고침)
+       document.location.href='/footer'
+        console.log('로그인 성공')
+    }
+    else{
+      alert('입력하신 정보가 없습니다.');
+    }
+  })
     .catch(error => {console.log(error.data)});
-  };
+  }
+  
+    const loginOptions = {
+      userId: { required: "Email is required" },
+      userPw: {
+        required: "Password is required",
+      }
+    };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form method="post" onSubmit={handleSubmit(onSubmit)}>
       <label>ID</label>
-      <input {...register("userId")}/>
+      <input name="userId" type="text"
+      {...register("userId", loginOptions.userId)}/>
+      {/* use role="alert" to announce the error message */}
+      {errors.userId && <p>{errors.userId.message}</p>}
+
       <label>Password</label>
-      <input {...register("userPw")}/>
-      <input type="submit" onClick={handleSubmit(onSubmit)} />
+      <input type="password"  name="userPw"
+      {...register("userPw", loginOptions.userPw)}/>
+      {/* use role="alert" to announce the error message */}
+      {errors.userPw && errors.userPw.type === "required"}
+      <button type="submit" onClick={joinHandler}>Login</button>      
     </form>
   );
 }

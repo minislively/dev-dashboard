@@ -1,23 +1,18 @@
-[
+[ 
     {
-        "display_name": "Dashboard",
+        "display_name": "Login",
         "route": "/",
-        "icon": "bx bx-category-alt"
+        "icon": "bx bx-user-pin"
     },
     {
-        "display_name": "Developer",
-        "route": "/developer",
-        "icon": "bx bx-user-pin"
+        "display_name": "Home",
+        "route": "/home",
+        "icon": "bx bx-category-alt"
     },
     {
         "display_name": "Footer",
         "route": "/footer",
         "icon": "bx bx-package"
-    },
-    {
-        "display_name": "Exchange",
-        "route": "/exchage",
-        "icon": "bx bx-cart"
     },
     {
         "display_name": "Exchange Analytics",
